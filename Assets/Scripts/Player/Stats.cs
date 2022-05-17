@@ -6,7 +6,7 @@ using TMPro;
 public class Stats : MonoBehaviour
 {
     public TextMeshProUGUI coinText;
-    int score;
+    public static int score;
 
     // Add Audio
     [SerializeField] private AudioSource collectSoundEffect;

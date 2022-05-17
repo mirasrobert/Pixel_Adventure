@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class Health : MonoBehaviour
@@ -72,6 +74,7 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         rb2d.velocity = new Vector2(0f, 0f);
         GameObject.Find("Player").SetActive(false);
+        SceneManager.LoadScene("GameOver");
     }
 
 }
