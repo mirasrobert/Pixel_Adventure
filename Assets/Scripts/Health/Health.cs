@@ -42,13 +42,26 @@ public class Health : MonoBehaviour
             
         }
     }
+    public void AddHealth(float _addHealth, GameObject healthObject)
+    {
+        if(currentHealth < 3)
+        {
+            currentHealthBar = currentHealthBar + 1;
+            int health = currentHealthBar - 1;
+            currentHealth = Mathf.Clamp(currentHealth + _addHealth, 0, startingHealth); // Add Health
+            healthbars[health].gameObject.SetActive(true);
+            Destroy(healthObject);
+        }
+
+    }
 
     public void ReduceHealthBar()
     {
         if (currentHealthBar > 0)
         {
             int minusHealth = (currentHealthBar - 1);
-            Destroy(healthbars[minusHealth].gameObject); // Remove Heart on UI
+            //Destroy(healthbars[minusHealth].gameObject); // Remove Heart on UI
+            healthbars[minusHealth].gameObject.SetActive(false);
             currentHealthBar -= 1; // Reduce Health
         }
     }
