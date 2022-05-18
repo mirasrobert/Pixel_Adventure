@@ -15,9 +15,11 @@ public class DoorKey : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             bool playerHasTheKey = collision.GetComponent<Stats>().canEnter();
-            if(playerHasTheKey)
+            
+            if (playerHasTheKey)
             {   // Finish Level
-                SceneManager.LoadScene("Gameover");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Advance Level
+
             } else
             {
                 doorIsLockText.text = "Door is lock";
