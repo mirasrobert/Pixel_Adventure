@@ -14,6 +14,8 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] public float jumpForce = 5f;
      
     [SerializeField] Transform groundCheck;
+    [SerializeField] Transform groundCheckLeft;
+    [SerializeField] Transform groundCheckRight;
 
 
     // Add Audio
@@ -29,7 +31,9 @@ public class CharacterController2D : MonoBehaviour
     private void FixedUpdate()
     {
         // Check if player is on ground or not
-        if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Foreground")))
+        if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Foreground")) ||
+            Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Foreground")) ||
+            Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Foreground")))
         {
             IS_GROUNDED = true;
         }
@@ -37,7 +41,6 @@ public class CharacterController2D : MonoBehaviour
         {
             IS_GROUNDED = false;
         }
-
 
         //horizontalInput = Input.GetAxisRaw("Horizontal"); // Player Controller [A & D Keyboard]
         horizontalInput = SimpleInput.GetAxisRaw("Horizontal"); // For Mobile
