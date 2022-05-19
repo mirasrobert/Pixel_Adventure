@@ -17,7 +17,6 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] Transform groundCheckLeft;
     [SerializeField] Transform groundCheckRight;
 
-
     // Add Audio
     [SerializeField] private AudioSource jumpSoundEffect;
 
@@ -26,6 +25,7 @@ public class CharacterController2D : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+
     }
 
     private void FixedUpdate()
@@ -62,7 +62,7 @@ public class CharacterController2D : MonoBehaviour
         {
             JumpMovement();
         }
-
+       
     }
 
     // For Mobile
@@ -90,4 +90,6 @@ public class CharacterController2D : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
+
+
 }
